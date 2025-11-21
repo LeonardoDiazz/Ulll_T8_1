@@ -1,4 +1,6 @@
-package com.example.mediaapp.data;
+
+
+package mx.edu.utez.grabadormultimedia.data
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -19,12 +21,12 @@ class SettingsRepository(context: Context) {
     }
     // Obtener el volumen guardado
     val userVolume: Flow<Float> = dataStore.data.map { preferences ->
-            preferences[VOLUME_KEY] ?: DEFAULT_VOLUME
+        preferences[VOLUME_KEY] ?: DEFAULT_VOLUME
     }
     // Guardar el volumen
     suspend fun saveVolume(volume: Float) {
         dataStore.edit { settings ->
-                val clampedVolume = volume.coerceIn(0.0f, 1.0f)
+            val clampedVolume = volume.coerceIn(0.0f, 1.0f)
             settings[VOLUME_KEY] = clampedVolume
         }
     }

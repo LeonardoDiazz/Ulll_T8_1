@@ -1,9 +1,13 @@
-package com.example.mediaapp.data;
+package com.example.mediaapp.data
 
 @Dao
-interface MediaDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMedia(item: MediaItem)
-    @Query("SELECT * FROM media_items WHERE type = :type ORDER BY date DESC")
-    fun getMediaByType(type: MediaType): Flow<List<MediaItem>>
+internal interface MediaDao {
+    fun insertMedia()
+
+    @get:Query("SELECT * FROM media_items WHERE type = :type ORDER BY date DESC")
+    val mediaByType: `fun`?
+
+    companion object {
+        val `fun`: suspend ? = null
+    }
 }
