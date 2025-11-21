@@ -1,26 +1,24 @@
 package com.example.mediaapp.data
 
+import android.content.Context
 import android.media.MediaRecorder
 import android.os.Build
-
-internal class AudioRecorder {
-    private var recorder: `var`? = null
-    private fun createRecorder(): `fun`?
-    fun MediaRecorder(context: `val`?) {
-        return
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+import java.io.File
+class AudioRecorder(private val context: Context) {
+    private var recorder: MediaRecorder? = null
+    private fun createRecorder(): MediaRecorder {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             MediaRecorder(context)
         } else {
 // Deprecated en API 31, pero necesario para < 31
+            @Suppress("DEPRECATION")
             MediaRecorder()
         }
     }
-
-    fun start(): `fun`? {
+    fun start(outputFile: File) {
 // Asegúrate de detener cualquier grabación anterior
         stop()
-        recorder = createRecorder().apply
-        run {
+        recorder = createRecorder().apply {
             setAudioSource(MediaRecorder.AudioSource.MIC)
             setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
             setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
@@ -28,31 +26,22 @@ internal class AudioRecorder {
             try {
                 prepare()
                 start()
-            } catch (NO_NAME_PROVIDED)
-            Exception
-            run {
+            } catch (e: Exception) {
                 e.printStackTrace()
-                // Liberar en caso de error de preparación
-                if (recorder)
-                    release()
+// Liberar en caso de error de preparación
+                recorder?.release()
                 recorder = null
             }
         }
     }
-
-    fun stop(): `fun`? {
+    fun stop() {
         try {
-            if (recorder)
-                stop()
-            if (recorder)
-                release()
-        } catch (NO_NAME_PROVIDED)
-        Exception
-        run {
-            // A veces stop() falla si se llama muy rápido
+            recorder?.stop()
+            recorder?.release()
+        } catch (e: Exception) {
+// A veces stop() falla si se llama muy rápido
             e.printStackTrace()
-            if (recorder)
-                release()
+            recorder?.release()
         }
         recorder = null
     }

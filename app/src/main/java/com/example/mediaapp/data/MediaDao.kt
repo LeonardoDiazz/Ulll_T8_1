@@ -1,13 +1,18 @@
 package com.example.mediaapp.data
 
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
+
 @Dao
-internal interface MediaDao {
-    fun insertMedia()
+interface MediaDao {
 
-    @get:Query("SELECT * FROM media_items WHERE type = :type ORDER BY date DESC")
-    val mediaByType: `fun`?
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertMedia(item: MediaItem)
 
-    companion object {
-        val `fun`: suspend ? = null
-    }
+    @Query("SELECT * FROM media_items WHERE type = :type ORDER BY date DESC")
+    fun getMediaByType(type: MediaType): Flow<List<MediaItem>>
 }
+
