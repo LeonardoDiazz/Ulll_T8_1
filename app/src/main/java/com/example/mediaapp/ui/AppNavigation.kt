@@ -14,17 +14,21 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import mx.edu.utez.grabadormultimedia.ViewModel.MediaViewModel
-import mx.edu.utez.grabadormultimedia.ViewModel.MediaViewModelFactory
-import mx.edu.utez.grabadormultimedia.ViewModel.PlaybackViewModel
-import mx.edu.utez.grabadormultimedia.ViewModel.PlaybackViewModelFactory
-import mx.edu.utez.grabadormultimedia.data.AudioRecorder
-import mx.edu.utez.grabadormultimedia.ui.screens.AudioListScreen
-import mx.edu.utez.grabadormultimedia.ui.screens.ImageListScreen
-import mx.edu.utez.grabadormultimedia.ui.screens.RecordingScreen
-import mx.edu.utez.grabadormultimedia.ui.screens.VideoListScreen
-import mx.edu.utez.grabadormultimedia.ui.screens.VideoPlayerScreen
-import mx.edu.utez.grabadormultimedia.ui.theme.AppBottomNavBar
+import com.example.mediaapp.ViewModel.MediaViewModel
+import com.example.mediaapp.ViewModel.MediaViewModelFactory
+import com.example.mediaapp.ViewModel.PlaybackViewModel
+import com.example.mediaapp.ViewModel.PlaybackViewModelFactory
+
+import com.example.mediaapp.data.AudioRecorder
+
+import com.example.mediaapp.ui.screens.AudioListScreen
+import com.example.mediaapp.ui.screens.ImageListScreen
+import com.example.mediaapp.ui.screens.RecordingScreen
+import com.example.mediaapp.ui.screens.VideoListScreen
+import com.example.mediaapp.ui.screens.VideoPlayerScreen
+
+import com.example.mediaapp.ui.AppBottomNavBar
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

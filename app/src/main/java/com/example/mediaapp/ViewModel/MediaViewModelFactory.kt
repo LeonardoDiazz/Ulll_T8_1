@@ -2,8 +2,8 @@ package com.example.mediaapp.ViewModel
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import mx.edu.utez.grabadormultimedia.data.AppDatabase
-import mx.edu.utez.grabadormultimedia.data.MediaRepository
+import com.example.mediaapp.data.AppDatabase
+import com.example.mediaapp.data.MediaRepository
 
 class MediaViewModelFactory(private val application: Application) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

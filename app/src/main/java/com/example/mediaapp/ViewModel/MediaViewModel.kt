@@ -12,9 +12,9 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import mx.edu.utez.grabadormultimedia.data.MediaItem
-import mx.edu.utez.grabadormultimedia.data.MediaRepository
-import mx.edu.utez.grabadormultimedia.data.MediaType
+import com.example.mediaapp.data.MediaItem
+import com.example.mediaapp.data.MediaRepository
+import com.example.mediaapp.data.MediaType
 import java.io.File
 
 class MediaViewModel(application: Application, private val repository: MediaRepository) : AndroidViewModel(application) {

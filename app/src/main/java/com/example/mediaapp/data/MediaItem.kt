@@ -1,5 +1,8 @@
 package com.example.mediaapp.data
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 @Entity(tableName = "media_items")
 data class MediaItem(
     @PrimaryKey(autoGenerate = true)

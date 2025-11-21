@@ -1,4 +1,4 @@
-package mx.edu.utez.grabadormultimedia.data
+package com.example.mediaapp.data
 
 import android.content.Context
 import androidx.room.Database
